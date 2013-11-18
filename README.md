@@ -1,6 +1,7 @@
 # Tester son code JS dans tous les navigateurs... automatiquement !#
+======================
 
-par [Nicolas MEDDA](http://github.com/b2l) et [Christophe PROMÉ](http://github.com/chprome)
+> par [Nicolas MEDDA](http://github.com/b2l) et [Christophe PROMÉ](http://github.com/chprome)
 
 ## Prérequis ##
 
