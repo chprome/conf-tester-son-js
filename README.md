@@ -33,6 +33,13 @@ Karma : ```karma start test/unit/karma.conf.js```
 
 ### d'intégration ###
 
+TODO
+
 ### d'interface ###
 
 Dalek : ```dalek -b chrome test/UI/dalek.js ```
+
+CasperJs + PhantomJs : ```casperjs test test/UI/casper.js --engine=phantomjs```
+
+CasperJs + SlimerJs : ```casperjs test test/UI/casper.js --engine=slimerjs```
+
