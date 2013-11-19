@@ -1,4 +1,4 @@
-var baseUrl = 'file:///home/christophe/dev/projects/conf-tester-son-js/index.html';
+var baseUrl = 'http://localhost:9001/';
 var ENTER_KEY = '\uE006';
 
 module.exports = {

@@ -30,7 +30,7 @@ casper.test.begin("Page title is correct", function(test) {
     // Given
 
     // When
-    casper.start('file:///home/nicolas/project/conf-tester-son-js/index.html', function() {
+    casper.start('http://localhost:9001/', function() {
         startUp();
     });
 
@@ -47,7 +47,7 @@ casper.test.begin("Page title is correct", function(test) {
 
 casper.test.begin("Les tâches sont ajoutées à la liste", function(test) {
     // Given
-    casper.start('file:///home/nicolas/project/conf-tester-son-js/index.html', function() {
+    casper.start('http://localhost:9001/', function() {
         startUp();
     });
 
@@ -67,9 +67,9 @@ casper.test.begin("Les tâches sont ajoutées à la liste", function(test) {
     });
 });
 //
-casper.test.begin("Les tâches sont bien supprimer de la liste", function(test) {
+casper.test.begin("Les tâches sont bien supprimées de la liste", function(test) {
     // Given
-    casper.start('file:///home/nicolas/project/conf-tester-son-js/index.html', function() {
+    casper.start('http://localhost:9001/', function() {
         startUp();
     });
     casper.then(function() {
@@ -85,7 +85,7 @@ casper.test.begin("Les tâches sont bien supprimer de la liste", function(test) 
     });
     // Guard
     casper.then(function() {
-        test.assertElementCount('#todo-list li', 3, 'On doit avoir une tâche dans la liste');
+        test.assertElementCount('#todo-list li', 3, 'On doit avoir trois tâches dans la liste');
     });
 
     // When
@@ -95,7 +95,7 @@ casper.test.begin("Les tâches sont bien supprimer de la liste", function(test) 
 
     // Then
     casper.then(function() {
-        test.assertElementCount('#todo-list li', 2, 'On doit avoir une tâche dans la liste');
+        test.assertElementCount('#todo-list li', 2, 'On doit avoir deux tâches dans la liste');
     });
 
     casper.run(function() {

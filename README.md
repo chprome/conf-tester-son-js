@@ -3,6 +3,8 @@
 
 > par [Nicolas MEDDA](http://github.com/b2l) et [Christophe PROMÉ](http://github.com/chprome)
 
+*Slides disponibles [ici](http://b2l.github.io/confJs)*
+
 ## Prérequis ##
 
 **Outils à installer**
@@ -25,9 +27,9 @@ npm install
 
 ### unitaires ###
 
-Testem : ```testem```
+Testem : ```testem -f test/unit/testem.json```
 
-Karma : ```karma```
+Karma : ```karma start test/unit/karma.conf.js```
 
 ### d'intégration ###
 

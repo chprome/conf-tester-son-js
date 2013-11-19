@@ -1,5 +1,7 @@
 {
     "framework" : "mocha+chai",
+    "launch_in_dev" : ["chrome", "firefox"],
+    "launch_in_ci" : ["chrome", "firefox"],
     "src_files" : [
         "./test/lib/sinon-chai.js",
         "./test/lib/sinon.js",
