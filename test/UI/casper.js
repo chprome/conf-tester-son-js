@@ -1,3 +1,5 @@
+var BASE_URL = 'http://localhost:9001/';
+
 casper.sendEnterKey = function(selector) {
     this.evaluate(function(selector) {
         var ENTER_KEY = '\uE006';
@@ -30,7 +32,7 @@ casper.test.begin("Page title is correct", function(test) {
     // Given
 
     // When
-    casper.start('http://localhost:9001/', function() {
+    casper.start(BASE_URL, function() {
         startUp();
     });
 
@@ -47,7 +49,7 @@ casper.test.begin("Page title is correct", function(test) {
 
 casper.test.begin("Les tâches sont ajoutées à la liste", function(test) {
     // Given
-    casper.start('http://localhost:9001/', function() {
+    casper.start(BASE_URL, function() {
         startUp();
     });
 
@@ -69,7 +71,7 @@ casper.test.begin("Les tâches sont ajoutées à la liste", function(test) {
 //
 casper.test.begin("Les tâches sont bien supprimées de la liste", function(test) {
     // Given
-    casper.start('http://localhost:9001/', function() {
+    casper.start(BASE_URL, function() {
         startUp();
     });
     casper.then(function() {
