@@ -1,4 +1,4 @@
-var baseUrl = 'file:///home/christophe/Dev/confjs/todomvc/vanilla-examples/vanillajs/index.html';
+var baseUrl = 'file:///home/christophe/dev/projects/conf-tester-son-js/index.html';
 var ENTER_KEY = '\uE006';
 
 module.exports = {

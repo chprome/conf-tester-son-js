@@ -20,3 +20,17 @@ git clone git@github.com:chprome/conf-tester-son-js.git
 cd conf-tester-son-js
 npm install
 ```
+
+## Exécuter les tests ##
+
+### unitaires ###
+
+Testem : ```testem```
+
+Karma : ```karma```
+
+### d'intégration ###
+
+### d'interface ###
+
+Dalek : ```dalek -b chrome test/UI/dalek.js ```
