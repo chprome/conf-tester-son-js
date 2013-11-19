@@ -157,6 +157,7 @@
 	 * storage
 	 */
 	Controller.prototype.removeItem = function (id) {
+
 		this.model.remove(id, function () {
 			var elem = $$('[data-id="' + id + '"]');
 
@@ -248,6 +249,9 @@
 		this.$toggleAll.checked = todos.completed === todos.total;
 
 		this._toggleFrame(todos);
+
+		var event = new CustomEvent("updateCount", {"detail":{"counter":todos.active}});
+		document.dispatchEvent(event);
 	};
 
 	/**

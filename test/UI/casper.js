@@ -37,7 +37,7 @@ casper.test.begin("Page title is correct", function(test) {
     // Then
     casper.then(function() {
         var title = this.getTitle();
-        test.assert(title === 'VanillaJS • TodoMVC', 'La page a le bon titre')
+        test.assert(title === 'VanillaJS • TodoMVC (0)', 'La page a le bon titre')
     });
 
     casper.run(function() {

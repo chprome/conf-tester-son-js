@@ -12,6 +12,7 @@
 		this.model = new app.Model(this.storage);
 		this.view = new app.View();
 		this.controller = new app.Controller(this.model, this.view);
+		new app.TitleUpdater();
 	}
 
 	var todo = new Todo('todos-vanillajs');
