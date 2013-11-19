@@ -9,11 +9,12 @@
 
 **Outils à installer**
 
- * [nodejs & npm](http://nodejs.org)
- * [dalek](http://dalekjs.com)
- * [phantomjs](http://phantomjs.org)
- * [karma](http://karma-runner.github.io)
- * [casperjs](http://casperjs.org)
+ * [node.js & npm](http://nodejs.org)
+ * [DalekJS](http://dalekjs.com)
+ * [PhantomJS](http://phantomjs.org)
+ * [SlimerJS](http://slimerjs.org/)
+ * [Karma](http://karma-runner.github.io)
+ * [CasperJS](http://casperjs.org)
 
 **Récupérer le projet et installer les dépendences**
 
