@@ -2,6 +2,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-connect');
 
     grunt.initConfig({
+
+        // http server
         connect: {
             server: {
                 options: {
