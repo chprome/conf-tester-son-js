@@ -40,7 +40,7 @@ TODO
 
 Dalek : ```dalek -b chrome test/UI/dalek.js ```
 
-CasperJs + PhantomJs : ```casperjs test test/UI/casper.js --engine=phantomjs```
+CasperJS + PhantomJS : ```casperjs test test/UI/casper.js --engine=phantomjs```
 
-CasperJs + SlimerJs : ```casperjs test test/UI/casper.js --engine=slimerjs```
+CasperJS + SlimerJS : ```casperjs test test/UI/casper.js --engine=slimerjs```
 
