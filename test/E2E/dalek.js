@@ -1,7 +1,7 @@
 var baseUrl = 'http://localhost:9001/';
 
 module.exports = {
-    'Les éléments sont ajoutées à la liste' : function (test) {
+    'Les éléments sont ajoutés à la liste' : function (test) {
         test
             .open(baseUrl)
             .type('#ajouter-element-input', 'un élément')
