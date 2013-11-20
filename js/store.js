@@ -10,6 +10,11 @@
         }
     }
 
+    Store.prototype.save = function(item) {
+        var data = JSON.parse(localStorage[this._dbName]);
+
+        data.todos.push(item);
+    };
 
     window.Store = Store;
 })();
