@@ -6,8 +6,10 @@
         "./test/lib/sinon-chai.js",
         "./test/lib/sinon.js",
         "./test/unit/init.js",
-        "./js/StoreTest.js",
+        "./js/store.js",
         "./js/model.js",
+        "./js/StoreTest.js",
+        "./js/ModelTest.js",
         "./test/unit/specs/StoreTest.js"
     ]
 }
