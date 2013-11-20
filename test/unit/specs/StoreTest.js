@@ -1,6 +1,10 @@
 var expect = chai.expect;
 
 describe('Store api', function() {
+    beforeEach(function() {
+        delete localStorage['todos-test'];
+    });
+
     it('Store constructeur', function() {
         var dbName = 'todos-test';
         // Given
@@ -13,7 +17,7 @@ describe('Store api', function() {
         var expectedDb = {
             todos: []
         };
-        expect(localStorage[dbName]).to.deep.equal(expectedDb);
+        expect(JSON.parse(localStorage[dbName])).to.deep.equal(expectedDb);
     });
 
     it('Store.save', function() {
