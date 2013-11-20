@@ -2,7 +2,6 @@
 var view = new View();
 var model = new Model();
 var controller = new Controller(model, view);
-view.setController(controller);
 
 document.onreadystatechange = function() {
     if (document.readyState === "complete") {

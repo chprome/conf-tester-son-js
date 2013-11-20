@@ -1,10 +1,8 @@
 function View() {}
 
-View.prototype.setController = function(controller) {
+View.prototype.init = function(controller) {
     this.controller = controller;
-};
 
-View.prototype.init = function() {
     this.container = document.getElementById('wrapper');
 
     this.button = document.createElement('button');

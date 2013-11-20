@@ -25,9 +25,19 @@ app.configure('production', function(){
   app.use(express.errorHandler());
 });
 
+var elements = [];
 
-app.get('/', function index(req, res) {
+app.get('/', function (req, res) {
     res.sendfile('client/src/html/index.html');
+});
+
+app.get('/elements', function (req, res) {
+    res.json(elements);
+});
+
+app.post('/element', function (req, res) {
+    elements.push(req.body.value);
+    res.send();
 });
 
 var port = process.env.PORT || 5000;
