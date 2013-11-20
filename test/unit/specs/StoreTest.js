@@ -41,12 +41,38 @@ describe('Store api', function() {
             ]
         };
         var actualData = JSON.parse(localStorage[dbName]);
-
-        expect(actualData).to.deep.equal(expectedDatas);
+        expect(actualData.todos).to.have.length(expectedDatas.todos.length);
+        expect(actualData.todos[0].title).to.equal(expectedDatas.todos[0].title);
+        expect(actualData.todos[0].completed).to.equal(expectedDatas.todos[0].completed);
     });
 
     it("Store.save - mise a jour d'un élément", function() {
+        // Given
+        var store = new Store(dbName);
+        var todo = store.save({
+            title: 'un élément',
+            completed: 0
+        });
 
+        // When
+        store.save(todo.id, {
+            title: 'un élément modifié',
+            completed: 0
+        });
+
+        // Then
+        var expectedDatas = {
+            todos: [
+                {
+                    title: 'un élément modifié',
+                    completed: 0
+                }
+            ]
+        };
+        var actualData = JSON.parse(localStorage[dbName]);
+        expect(actualData.todos).to.have.length(expectedDatas.todos.length);
+        expect(actualData.todos[0].title).to.equal(expectedDatas.todos[0].title);
+        expect(actualData.todos[0].completed).to.equal(expectedDatas.todos[0].completed);
     });
 
     it('Store.find', function() {
