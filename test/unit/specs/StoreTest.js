@@ -1,12 +1,13 @@
 var expect = chai.expect;
 
+var dbName = 'todos-test';
+
 describe('Store api', function() {
     beforeEach(function() {
-        delete localStorage['todos-test'];
+        delete localStorage[dbName];
     });
 
     it('Store constructeur', function() {
-        var dbName = 'todos-test';
         // Given
         expect(localStorage[dbName]).to.be.undefined;
 
@@ -20,7 +21,31 @@ describe('Store api', function() {
         expect(JSON.parse(localStorage[dbName])).to.deep.equal(expectedDb);
     });
 
-    it('Store.save', function() {
+    it('Store.save avec un nouvel élément', function() {
+        // Given
+        var store = new Store(dbName);
+
+        // When
+        store.save({
+            title: 'un élément',
+            completed: 0
+        });
+
+        // Then
+        var expectedDatas = {
+            todos: [
+                {
+                    title: 'un élément',
+                    completed: 0
+                }
+            ]
+        };
+        var actualData = JSON.parse(localStorage[dbName]);
+
+        expect(actualData).to.deep.equal(expectedDatas);
+    });
+
+    it("Store.save - mise a jour d'un élément", function() {
 
     });
 
