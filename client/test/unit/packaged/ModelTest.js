@@ -9,7 +9,7 @@ function Model(store) {
 MicroEE.mixin(Model);
 
 Model.prototype.init = function() {
-    this.elements = this.store.findAll();
+    this.store.findAll(this.onNewElements.bind(this));
 };
 
 Model.prototype.addElement = function(element) {
@@ -23,6 +23,11 @@ Model.prototype.count = function() {
 
 Model.prototype.findAll = function() {
     return this.elements;
+};
+
+Model.prototype.onNewElements = function(elements) {
+    this.elements = elements;
+    this.emit('updated', this.elements);
 };
 
 module.exports = Model;
@@ -39,9 +44,12 @@ Store.prototype.save = function(element) {
         .end(function(){});
 };
 
-Store.prototype.findAll = function() {
-    // TODO implements
-    return [];
+Store.prototype.findAll = function(cb) {
+    request
+        .get('/elements')
+        .end(function(response) {
+            cb(JSON.parse(response.text));
+        });
 };
 
 module.exports = Store;
@@ -74,21 +82,19 @@ describe('Model', function() {
         // Given
         var store = new Store();
         var model = new Model(store);
-        var mock = sinon.mock(store);
+
         var expectedElements = [
             'toto',
             'tata',
             'titi'
         ];
-
-        mock.expects('findAll').once().returns(expectedElements.slice(0));
+        sinon.stub(store,'findAll').yields(expectedElements);
 
         // When
         model.init();
         var allElements = model.findAll();
 
         // Then
-        expect(mock.verify()).to.be.true;
         expect(allElements.length).to.equal(3);
         expect(allElements).to.deep.equal(expectedElements);
     });

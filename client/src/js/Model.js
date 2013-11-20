@@ -8,7 +8,7 @@ function Model(store) {
 MicroEE.mixin(Model);
 
 Model.prototype.init = function() {
-    this.elements = this.store.findAll();
+    this.store.findAll(this.onNewElements.bind(this));
 };
 
 Model.prototype.addElement = function(element) {
@@ -22,6 +22,11 @@ Model.prototype.count = function() {
 
 Model.prototype.findAll = function() {
     return this.elements;
+};
+
+Model.prototype.onNewElements = function(elements) {
+    this.elements = elements;
+    this.emit('updated', this.elements);
 };
 
 module.exports = Model;

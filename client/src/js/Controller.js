@@ -17,6 +17,7 @@ Controller.prototype.init = function() {
     this.view.renderElements(this.model.findAll());
 
     this.view.on('newElement', this.newElement.bind(this));
+    this.model.on('updated', this.modelUpdated.bind(this));
 };
 
 Controller.prototype.modelUpdated = function(elements) {

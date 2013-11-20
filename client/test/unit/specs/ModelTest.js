@@ -26,21 +26,19 @@ describe('Model', function() {
         // Given
         var store = new Store();
         var model = new Model(store);
-        var mock = sinon.mock(store);
+
         var expectedElements = [
             'toto',
             'tata',
             'titi'
         ];
-
-        mock.expects('findAll').once().returns(expectedElements.slice(0));
+        sinon.stub(store,'findAll').yields(expectedElements);
 
         // When
         model.init();
         var allElements = model.findAll();
 
         // Then
-        expect(mock.verify()).to.be.true;
         expect(allElements.length).to.equal(3);
         expect(allElements).to.deep.equal(expectedElements);
     });

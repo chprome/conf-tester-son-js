@@ -36,6 +36,7 @@ Controller.prototype.init = function() {
     this.view.renderElements(this.model.findAll());
 
     this.view.on('newElement', this.newElement.bind(this));
+    this.model.on('updated', this.modelUpdated.bind(this));
 };
 
 Controller.prototype.modelUpdated = function(elements) {
@@ -63,7 +64,7 @@ function Model(store) {
 MicroEE.mixin(Model);
 
 Model.prototype.init = function() {
-    this.elements = this.store.findAll();
+    this.store.findAll(this.onNewElements.bind(this));
 };
 
 Model.prototype.addElement = function(element) {
@@ -77,6 +78,11 @@ Model.prototype.count = function() {
 
 Model.prototype.findAll = function() {
     return this.elements;
+};
+
+Model.prototype.onNewElements = function(elements) {
+    this.elements = elements;
+    this.emit('updated', this.elements);
 };
 
 module.exports = Model;
@@ -93,9 +99,12 @@ Store.prototype.save = function(element) {
         .end(function(){});
 };
 
-Store.prototype.findAll = function() {
-    // TODO implements
-    return [];
+Store.prototype.findAll = function(cb) {
+    request
+        .get('/elements')
+        .end(function(response) {
+            cb(JSON.parse(response.text));
+        });
 };
 
 module.exports = Store;

@@ -10,9 +10,12 @@ Store.prototype.save = function(element) {
         .end(function(){});
 };
 
-Store.prototype.findAll = function() {
-    // TODO implements
-    return [];
+Store.prototype.findAll = function(cb) {
+    request
+        .get('/elements')
+        .end(function(response) {
+            cb(JSON.parse(response.text));
+        });
 };
 
 module.exports = Store;
