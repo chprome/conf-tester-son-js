@@ -17,7 +17,7 @@ document.onreadystatechange = function() {
     
 };
 },{"./Controller":2,"./Model":3,"./View":5}],2:[function(require,module,exports){
-var MicroEE = require('./libs/microee');
+var MicroEE = require('microee');
 var View = require('./View');
 var Model = require('./Model');
 var Store = require('./Store');
@@ -52,7 +52,7 @@ Controller.prototype.newElement = function(value) {
 };
 
 module.exports = Controller;
-},{"./Model":3,"./Store":4,"./View":5,"./libs/microee":6}],3:[function(require,module,exports){
+},{"./Model":3,"./Store":4,"./View":5,"microee":6}],3:[function(require,module,exports){
 var MicroEE = require('microee');
 
 function Model(store) {
@@ -80,7 +80,7 @@ Model.prototype.findAll = function() {
 };
 
 module.exports = Model;
-},{"microee":7}],4:[function(require,module,exports){
+},{"microee":6}],4:[function(require,module,exports){
 var request = require('superagent');
 
 function Store() {}
@@ -99,8 +99,8 @@ Store.prototype.findAll = function() {
 };
 
 module.exports = Store;
-},{"superagent":8}],5:[function(require,module,exports){
-var MicroEE = require('./libs/microee');
+},{"superagent":7}],5:[function(require,module,exports){
+var MicroEE = require('microee');
 
 function View() {}
 
@@ -146,56 +146,7 @@ View.prototype.onSubmit = function(e) {
 };
 
 module.exports = View;
-},{"./libs/microee":6}],6:[function(require,module,exports){
-function M() { this._events = {}; }
-M.prototype = {
-    on: function(ev, cb) {
-        this._events || (this._events = {});
-        var e = this._events;
-        (e[ev] || (e[ev] = [])).push(cb);
-        return this;
-    },
-    removeListener: function(ev, cb) {
-        var e = this._events[ev] || [], i;
-        for(i = e.length-1; i >= 0 && e[i]; i--){
-            if(e[i] === cb || e[i].cb === cb) { e.splice(i, 1); }
-        }
-    },
-    removeAllListeners: function(ev) {
-        if(!ev) { this._events = {}; }
-        else { this._events[ev] && (this._events[ev] = []); }
-    },
-    emit: function(ev) {
-        this._events || (this._events = {});
-        var args = Array.prototype.slice.call(arguments, 1), i, e = this._events[ev] || [];
-        for(i = e.length-1; i >= 0 && e[i]; i--){
-            e[i].apply(this, args);
-        }
-        return this;
-    },
-    when: function(ev, cb) {
-        return this.once(ev, cb, true);
-    },
-    once: function(ev, cb, when) {
-        if(!cb) return this;
-        function c() {
-            if(!when) this.removeListener(ev, c);
-            if(cb.apply(this, arguments) && when) this.removeListener(ev, c);
-        }
-        c.cb = cb;
-        this.on(ev, c);
-        return this;
-    }
-};
-M.mixin = function(dest) {
-    var o = M.prototype, k;
-    for (k in o) {
-        o.hasOwnProperty(k) && (dest.prototype[k] = o[k]);
-    }
-};
-
-module.exports = M;
-},{}],7:[function(require,module,exports){
+},{"microee":6}],6:[function(require,module,exports){
 function M() { this._events = {}; }
 M.prototype = {
   on: function(ev, cb) {
@@ -244,7 +195,7 @@ M.mixin = function(dest) {
 };
 module.exports = M;
 
-},{}],8:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 /**
  * Module dependencies.
  */
@@ -1210,7 +1161,7 @@ request.put = function(url, data, fn){
 
 module.exports = request;
 
-},{"emitter":9,"reduce":10}],9:[function(require,module,exports){
+},{"emitter":8,"reduce":9}],8:[function(require,module,exports){
 
 /**
  * Expose `Emitter`.
@@ -1368,7 +1319,7 @@ Emitter.prototype.hasListeners = function(event){
   return !! this.listeners(event).length;
 };
 
-},{}],10:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 
 /**
  * Reduce `arr` with `fn`.

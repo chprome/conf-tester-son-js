@@ -1,4 +1,4 @@
-var MicroEE = require('./libs/microee');
+var MicroEE = require('microee');
 
 function View() {}
 

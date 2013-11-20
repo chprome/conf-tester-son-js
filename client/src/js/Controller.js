@@ -1,4 +1,4 @@
-var MicroEE = require('./libs/microee');
+var MicroEE = require('microee');
 var View = require('./View');
 var Model = require('./Model');
 var Store = require('./Store');
