@@ -5,7 +5,7 @@ describe('Notre projet', function() {
     it ('peut ajouter un élément dans la liste', function() {
         // Given
         var button = document.getElementById('ajouter-element-button');
-        var input = document.querySelector('input');
+        var input = document.getElementById('ajouter-element-input');
         input.value = "mon nouvel élément";
 
         // When
