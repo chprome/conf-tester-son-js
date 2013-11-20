@@ -1,7 +1,8 @@
 // Lancement de l'appli
-var view = new View();
-var model = new Model();
-var controller = new Controller(model, view);
+
+var View = require('./View');
+var Model = require('./Model');
+var Controller = require('./Controller');
 
 document.onreadystatechange = function() {
     if (document.readyState === "complete") {
@@ -10,7 +11,7 @@ document.onreadystatechange = function() {
             wrapper.setAttribute('id', 'wrapper');
             document.body.appendChild(wrapper);
         }
-        controller.init();
+        new Controller().init();
     }
     
 };

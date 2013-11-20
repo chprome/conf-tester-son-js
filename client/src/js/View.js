@@ -1,7 +1,10 @@
+var MicroEE = require('./libs/microee');
+
 function View() {}
 
-View.prototype.init = function(controller) {
-    this.controller = controller;
+MicroEE.mixin(View);
+
+View.prototype.init = function() {
 
     this.container = document.getElementById('wrapper');
 
@@ -36,6 +39,8 @@ View.prototype.renderElements = function(elements) {
 };
 
 View.prototype.onSubmit = function(e) {
-    this.controller.newElement(this.input.value);
+    this.emit('newElement', this.input.value);
     this.input.value = "";
 };
+
+module.exports = View;

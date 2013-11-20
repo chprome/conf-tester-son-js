@@ -1,12 +1,22 @@
-function Controller(model, view) {
-    this.model = model;
-    this.view = view;
+var MicroEE = require('./libs/microee');
+var View = require('./View');
+var Model = require('./Model');
+var Store = require('./Store');
+
+
+function Controller() {
+    this.model = new Model(new Store());
+    this.view = new View();
 }
 
+MicroEE.mixin(Controller);
+
 Controller.prototype.init = function() {
-    this.model.init(this);
     this.view.init(this);
+    this.model.init();
     this.view.renderElements(this.model.findAll());
+
+    this.view.on('newElement', this.newElement.bind(this));
 };
 
 Controller.prototype.modelUpdated = function(elements) {
@@ -21,3 +31,5 @@ Controller.prototype.newElement = function(value) {
         this.view.renderElements(this.model.findAll());
     }
 };
+
+module.exports = Controller;

@@ -3,10 +3,7 @@
     "launch_in_dev" : ["chrome", "firefox"],
     "launch_in_ci" : ["phantomjs"],
     "src_files" : [
-        "./client/src/js/Controller.js",
-        "./client/src/js/Model.js",
-        "./client/src/js/View.js",
-        "./client/src/js/App.js",
+        "./client/packaged/App.js",
 
         "./client/test/integration/integrationTest.js"
     ]

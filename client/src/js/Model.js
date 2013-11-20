@@ -1,26 +1,19 @@
-var tinyxhr = tinyxhr || function(){};
+var MicroEE = require('microee');
 
-function Model() {
+function Model(store) {
+    this.store = store;
     this.elements = [];
 }
 
-Model.prototype.init = function(controller) {
-    this.controller = controller;
+MicroEE.mixin(Model);
 
-    tinyxhr({
-        url: '/elements',
-        cb: this._onModelUpdate.bind(this),
-        method: 'GET'
-    });
+Model.prototype.init = function() {
+    this.elements = this.store.findAll();
 };
 
 Model.prototype.addElement = function(element) {
     this.elements.push(element);
-    tinyxhr({
-        url: '/element',
-        method: 'POST',
-        data: JSON.stringify({value: element})
-    });
+    this.store.save(element);
 };
 
 Model.prototype.count = function() {
@@ -31,7 +24,4 @@ Model.prototype.findAll = function() {
     return this.elements;
 };
 
-Model.prototype._onModelUpdate = function(response) {
-    this.elements = JSON.parse(response);
-    this.controller.modelUpdated(this.elements);
-};
+module.exports = Model;

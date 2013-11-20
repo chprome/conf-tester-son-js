@@ -1,6 +1,10 @@
 module.exports = function(grunt) {
+
+    grunt.loadNpmTasks('grunt-browserify');
+    grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-testem');
+    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-karma');
 
     grunt.initConfig({
@@ -49,6 +53,26 @@ module.exports = function(grunt) {
             }
         },
 
+        browserify: {
+            'client/packaged/App.js': 'client/src/js/App.js',
+            'client/test/unit/packaged/ModelTest.js': 'client/test/unit/specs/ModelTest.js'
+        },
+
+        clean: [
+            'client/packaged/*',
+            'client/test/unit/packaged/*'
+        ],
+
+        watch: {
+            build: {
+                files: ['client/src/js/**/*.js', 'client/test/unit/specs/*.js'],
+                tasks: ['browserify'],
+                options: {
+                    spawn: false,
+                }
+            }
+        },
+
         karma: {
             unit: {
                 options: {
@@ -94,7 +118,9 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.registerTask('default', ['connect']);
+    grunt.registerTask('build', ['clean', 'browserify', 'watch:build']);
+    grunt.registerTask('default', ['build']);
+
     grunt.registerTask('test-testem', ['testem:ci:integration', 'testem:ci:unit']);
     grunt.registerTask('test-karma', ['karma:integration', 'karma:unit']);
 };

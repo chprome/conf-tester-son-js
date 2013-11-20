@@ -3,8 +3,7 @@ module.exports = function (config) {
     config.set({
         files: [
             './init.js',
-            '../../js/store.js',
-            '../../js/model.js',
+            '../../packaged/App.js',
             './specs/*.js'
         ],
         frameworks: ['mocha', 'chai', 'sinon'],
