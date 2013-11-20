@@ -15,6 +15,7 @@ View.prototype.init = function() {
     this.input.setAttribute('id', 'ajouter-element-input');
     this.input.setAttribute('type', 'text');
     this.input.setAttribute('placeholder', 'Nouvel élément');
+    this.input.setAttribute('id', 'ajouter-element-input');
 
     this.container.appendChild(this.input);
     this.container.appendChild(this.button);

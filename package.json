@@ -20,7 +20,8 @@
     "karma-chai": "0.0.2",
     "karma-sinon": "0.0.1",
     "grunt": "~0.4.1",
-    "grunt-contrib-connect": "~0.5.0"
+    "grunt-contrib-connect": "~0.5.0",
+    "grunt-contrib-testem": "0.5.12"
   },
   "dependencies": {
     "mocha": "~1.14.0",
@@ -35,6 +36,7 @@
     "karma": "0.10.x",
     "karma-mocha": "0.1.x",
     "karma-chai": "0.0.x",
-    "karma-sinon": "0.0.x"
+    "karma-sinon": "0.0.x",
+    "grunt-contrib-testem": "0.5.12"
   }
 }
