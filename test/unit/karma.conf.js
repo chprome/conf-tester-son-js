@@ -3,6 +3,7 @@ module.exports = function (config) {
     config.set({
         files: [
             './init.js',
+            '../../js/model.js',
             '../../js/store.js',
             './specs/*.js'
         ],
