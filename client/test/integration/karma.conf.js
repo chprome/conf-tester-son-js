@@ -2,10 +2,10 @@
 module.exports = function (config) {
     config.set({
         files: [
-            '../../js/Model.js',
-            '../../js/View.js',
-            '../../js/Controller.js',
-            '../../js/App.js',
+            '../../src/js/Model.js',
+            '../../src/js/View.js',
+            '../../src/js/Controller.js',
+            '../../src/js/App.js',
             './integrationTest.js'
         ],
         frameworks: ['mocha', 'chai', 'sinon'],

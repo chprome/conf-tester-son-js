@@ -1,4 +1,4 @@
-var BASE_URL = 'http://localhost:9001/';
+var BASE_URL = 'http://localhost:5000/';
 
 
 casper.test.begin("Les éléments sont ajoutés à la liste", function(test) {
