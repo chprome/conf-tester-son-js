@@ -3,11 +3,11 @@
     "launch_in_dev" : ["chrome", "firefox"],
     "launch_in_ci" : ["phantomjs"],
     "src_files" : [
-        "./test/lib/sinon-chai.js",
-        "./test/lib/sinon.js",
-
+        "./js/Controller.js",
         "./js/Model.js",
+        "./js/View.js",
+        "./js/App.js",
 
-        "./test/unit/specs/ModelTest.js"
+        "./test/integration/integrationTest.js"
     ]
 }
