@@ -12,7 +12,7 @@ describe('Store api', function() {
         expect(localStorage[dbName]).to.be.undefined;
 
         // When
-        var store = new Store(dbName);
+        var store = new app.Store(dbName);
 
         // Then
         var expectedDb = {
@@ -23,7 +23,7 @@ describe('Store api', function() {
 
     it('Store.save avec un nouvel élément', function() {
         // Given
-        var store = new Store(dbName);
+        var store = new app.Store(dbName);
 
         // When
         store.save({
@@ -48,7 +48,7 @@ describe('Store api', function() {
 
     it("Store.save - mise a jour d'un élément", function() {
         // Given
-        var store = new Store(dbName);
+        var store = new app.Store(dbName);
         var todo = store.save({
             title: 'un élément',
             completed: 0
