@@ -37,6 +37,7 @@
     "karma-mocha": "0.1.x",
     "karma-chai": "0.0.x",
     "karma-sinon": "0.0.x",
-    "grunt-contrib-testem": "0.5.12"
+    "grunt-contrib-testem": "0.5.12",
+    "grunt-karma": "0.7.1"
   }
 }
