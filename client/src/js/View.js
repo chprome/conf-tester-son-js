@@ -25,9 +25,6 @@ View.prototype.init = function() {
     this.list.setAttribute('id', 'elements-list');
     this.container.appendChild(this.list);
 
-    var event = new CustomEvent('app.started');
-    document.dispatchEvent(event);
-
     this.button.addEventListener('click', this.onSubmit.bind(this));
 };
 

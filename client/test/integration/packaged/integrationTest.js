@@ -3,18 +3,24 @@ var expect = chai.expect;
 
 var server = sinon.fakeServer.create();
 server.autoRespond = true;
-server.respondWith('GET', '/elements', [200, {'Content-Type': 'application/json'}, '["elem1", "elem2", "elem3"]']);
+server.respondWith('GET', '/elements', [200, {
+    'Content-Type': 'application/json'
+}, '["elem1", "elem2", "elem3"]']);
 
 describe('Notre projet', function() {
 
     before(function(done) {
         // Mock
-        document.addEventListener('app.started', function() {
-            done();
-        })
+        setTimeout(function checkIfAppIsRunning() {
+            if (!document.getElementById('wrapper')) {
+                setTimeout(checkIfAppIsRunning, 1);
+            } else {
+                done();
+            }
+        }, 1);
     });
 
-    it ('peut afficher la listes des éléments récupérés depuis le serveur', function(done) {
+    it('peut afficher la listes des éléments récupérés depuis le serveur', function(done) {
         // Given
         var list = document.getElementById('elements-list');
 
@@ -25,7 +31,7 @@ describe('Notre projet', function() {
 
     });
 
-    it ('peut ajouter un élément dans la liste', function() {
+    it('peut ajouter un élément dans la liste', function() {
         // Given
         var button = document.getElementById('ajouter-element-button');
         var input = document.getElementById('ajouter-element-input');
