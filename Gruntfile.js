@@ -75,8 +75,8 @@ module.exports = function(grunt) {
                 options: {
                     singleRun: true,
                     files: [
-                        '../../packaged/App.js',
-                        './specs/*.js'
+                        './client/packaged/App.js',
+                        './client/test/unit/packaged/*.js'
                     ],
                     frameworks: ['mocha', 'chai', 'sinon'],
                     browsers: ['Chrome', 'Firefox'],
@@ -94,8 +94,8 @@ module.exports = function(grunt) {
                 options: {
                     singleRun: true,
                     files: [
-                        '../../packaged/App.js',
-                        './integrationTest.js'
+                        './client/packaged/App.js',
+                        './client/test/integration/packaged/integrationTest.js'
                     ],
                     frameworks: ['mocha', 'chai', 'sinon'],
                     browsers: ['Chrome', 'Firefox'],

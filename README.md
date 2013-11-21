@@ -10,6 +10,7 @@
 **Outils à installer**
 
  * [node.js & npm](http://nodejs.org)
+ * [Grunt](http://gruntjs.com/)
  * [DalekJS](http://dalekjs.com)
  * [PhantomJS](http://phantomjs.org)
  * [SlimerJS](http://slimerjs.org/)
@@ -24,23 +25,35 @@ cd conf-tester-son-js
 npm install
 ```
 
+## Lancer le serveur ##
+
+```
+node app.js
+```
+
 ## Exécuter les tests ##
 
 ### unitaires ###
 
-Testem : ```testem -f test/unit/testem.json```
+ * Testem : ```grunt testem:run:unit```
 
-Karma : ```karma start test/unit/karma.conf.js```
+ * Karma : ```grunt karma:unit```
 
 ### d'intégration ###
 
-TODO
+ * Testem : ```grunt testem:run:integration```
+
+ * Karma : ```grunt karma:integration```
 
 ### d'interface ###
 
-Dalek : ```dalek -b chrome test/UI/dalek.js ```
+Lancer le serveur : ```node app.js ```
 
-CasperJS + PhantomJS : ```casperjs test test/UI/casper.js --engine=phantomjs```
+Puis au choix :
 
-CasperJS + SlimerJS : ```casperjs test test/UI/casper.js --engine=slimerjs```
+ * Dalek : ```dalek -b chrome test/UI/dalek.js ```
+
+ * CasperJS + PhantomJS : ```casperjs test test/UI/casper.js --engine=phantomjs```
+
+ * CasperJS + SlimerJS : ```casperjs test test/UI/casper.js --engine=slimerjs```
 
