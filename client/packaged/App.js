@@ -14,7 +14,6 @@ document.onreadystatechange = function() {
         }
         new Controller().init();
     }
-    
 };
 },{"./Controller":2,"./Model":3,"./View":5}],2:[function(require,module,exports){
 var MicroEE = require('microee');
@@ -135,6 +134,9 @@ View.prototype.init = function() {
     this.list = document.createElement('ul');
     this.list.setAttribute('id', 'elements-list');
     this.container.appendChild(this.list);
+
+    var event = new CustomEvent('app.started');
+    document.dispatchEvent(event);
 
     this.button.addEventListener('click', this.onSubmit.bind(this));
 };

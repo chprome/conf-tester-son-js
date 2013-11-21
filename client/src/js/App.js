@@ -13,5 +13,4 @@ document.onreadystatechange = function() {
         }
         new Controller().init();
     }
-    
 };

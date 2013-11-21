@@ -2,7 +2,6 @@
 module.exports = function (config) {
     config.set({
         files: [
-            './init.js',
             '../../packaged/App.js',
             './specs/*.js'
         ],

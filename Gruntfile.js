@@ -21,38 +21,6 @@ module.exports = function(grunt) {
             }
         },
 
-        testem: {
-            unit: {
-                options: {
-                    reporter: 'tap',
-                    framework : "mocha+chai",
-                    launch_in_dev : ["chrome", "firefox"],
-                    launch_in_ci : ["chrome", "firefox"]
-                },
-                src: [
-                    "./js/Model.js",
-
-                    "./test/unit/specs/ModelTest.js"
-                ]
-            },
-            integration: {
-                options: {
-                    reporter: 'tap',
-                    framework : "mocha+chai",
-                    launch_in_dev : ["chrome", "firefox"],
-                    launch_in_ci : ["Chrome", "firefox"]
-                },
-                src: [
-                    "./js/Controller.js",
-                    "./js/Model.js",
-                    "./js/View.js",
-                    "./js/App.js",
-
-                    "./test/integration/integrationTest.js"
-                ]
-            }
-        },
-
         browserify: {
             'client/packaged/App.js': 'client/src/js/App.js',
             'client/test/unit/packaged/ModelTest.js': 'client/test/unit/specs/ModelTest.js',
@@ -69,8 +37,36 @@ module.exports = function(grunt) {
                 files: ['client/src/js/**/*.js', 'client/test/unit/specs/*.js', 'client/test/integration/specs/*.js'],
                 tasks: ['browserify'],
                 options: {
-                    spawn: false,
+                    spawn: false
                 }
+            }
+        },
+
+        testem: {
+            unit: {
+                options: {
+                    reporter: 'tap',
+                    framework : "mocha+chai",
+                    launch_in_dev : ["chrome", "firefox"],
+                    launch_in_ci : ["chrome", "firefox"]
+                },
+                src: [
+                    "./client/test/unit/packaged/ModelTest.js"
+                ]
+            },
+            integration: {
+                options: {
+                    reporter: 'tap',
+                    framework : "mocha+chai",
+                    launch_in_dev : ["chrome", "firefox"],
+                    launch_in_ci : ["Chrome", "firefox"]
+                },
+                src: [
+                    "./client/packaged/App.js",
+                    "./client/test/lib/sinon.js",
+
+                    "./client/test/integration/packaged/integrationTest.js"
+                ]
             }
         },
 
@@ -79,8 +75,8 @@ module.exports = function(grunt) {
                 options: {
                     singleRun: true,
                     files: [
-                        './js/Model.js',
-                        './test/unit/specs/ModelTest.js'
+                        '../../packaged/App.js',
+                        './specs/*.js'
                     ],
                     frameworks: ['mocha', 'chai', 'sinon'],
                     browsers: ['Chrome', 'Firefox'],
@@ -98,11 +94,8 @@ module.exports = function(grunt) {
                 options: {
                     singleRun: true,
                     files: [
-                        './js/Model.js',
-                        './js/View.js',
-                        './js/Controller.js',
-                        './js/App.js',
-                        './test/integration/integrationTest.js'
+                        '../../packaged/App.js',
+                        './integrationTest.js'
                     ],
                     frameworks: ['mocha', 'chai', 'sinon'],
                     browsers: ['Chrome', 'Firefox'],
