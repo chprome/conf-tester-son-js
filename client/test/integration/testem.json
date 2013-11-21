@@ -4,7 +4,8 @@
     "launch_in_ci" : ["phantomjs"],
     "src_files" : [
         "./client/packaged/App.js",
+        "./client/test/lib/sinon.js",
 
-        "./client/test/integration/integrationTest.js"
+        "./client/test/integration/packaged/integrationTest.js"
     ]
 }

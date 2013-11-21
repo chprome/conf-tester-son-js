@@ -55,7 +55,8 @@ module.exports = function(grunt) {
 
         browserify: {
             'client/packaged/App.js': 'client/src/js/App.js',
-            'client/test/unit/packaged/ModelTest.js': 'client/test/unit/specs/ModelTest.js'
+            'client/test/unit/packaged/ModelTest.js': 'client/test/unit/specs/ModelTest.js',
+            'client/test/integration/packaged/integrationTest.js': 'client/test/integration/specs/integrationTest.js'
         },
 
         clean: [
@@ -65,7 +66,7 @@ module.exports = function(grunt) {
 
         watch: {
             build: {
-                files: ['client/src/js/**/*.js', 'client/test/unit/specs/*.js'],
+                files: ['client/src/js/**/*.js', 'client/test/unit/specs/*.js', 'client/test/integration/specs/*.js'],
                 tasks: ['browserify'],
                 options: {
                     spawn: false,
