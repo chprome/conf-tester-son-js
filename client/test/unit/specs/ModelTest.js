@@ -9,15 +9,14 @@ describe('Model', function() {
         // Given
         var store = new Store();
         var model = new Model(store);
-        var mock = sinon.mock(store);
-        mock.expects('save').once();
+        var stub = sinon.stub(store,'save');
 
         // When
         model.addElement("nouvel élément");
         var allElements = model.findAll();
 
         // Then
-        expect(mock.verify()).to.be.true;
+        expect(stub.calledOnce).to.be.true;
         expect(allElements.length).to.equal(1);
         expect(allElements[0]).to.equal("nouvel élément");
     });
